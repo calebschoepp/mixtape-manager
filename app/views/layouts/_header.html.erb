@@ -1,25 +1,18 @@
-<div class="pt-16 absolute top-0 left-0 right-0 bottom-0">
-    <header class="shadow-xl h-16 fixed bg-white -m-16 mx-auto w-full z-40">
-    <div class="ACCENT h-1 w-full bg-green-500"></div>
-        <div class="flex items-center justify-between px-6 h-full">
-            <div>
-                <a href="/dashboard">
-                    <%= image_tag("logo.svg", class: 'inline-block max-h-8 mr-2', alt: 'StudyBuddy Logo') %>
-                </a>
-            </div>
-            <div class="flex flex-row items-center justify-right">
-                {{ if eq . "/logout" }}
-                <a href="/help"><img class="inline pr-6" src="/static/help.svg" alt="?"></a>
-                {{ end }}
-                <div>
-                    <a href="{{ . }}" class="btn btn-secondary-green">
-                        {{ if eq . "/logout" }}
-                        Logout
-                        {{ else }}
-                        Login
-                        {{ end }}
-                    </a>
-                </div>
-            </div>
+<header class="shadow-xl h-16 fixed bg-white -m-16 mx-auto w-full z-40">
+    <div class="h-1 w-full bg-green-500"></div>
+    <div class="flex items-center justify-between px-6 h-full">
+        <%= link_to '/landing' do %>
+            <%= image_tag("logo.svg", alt: 'StudyBuddy Logo') %>
+        <% end %>
+        <div class="flex flex-row items-center justify-right">
+            <% if true %>
+                <%= link_to '/help' do %>
+                    <%= image_tag("help.svg", alt: 'Help', class: 'inline pr-6') %>
+                <% end %>
+                <%= link_to "Logout", '/logout', data: { "turbo-method": :delete }, class: 'btn btn-secondary-green' %>
+            <% else %>
+                <%= link_to "Login", '/login', class: 'btn btn-secondary-green' %>
+            <% end %>
         </div>
-    </header>
+    </div>
+</header>

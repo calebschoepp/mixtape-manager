@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # Resources
+  resources :playlists
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  # Static pages
+  get 'landing', to: 'static#landing' # TODO: Fix me
+  get 'help', to: 'static#help'
+  
+  # TODO: Fix
+  root 'playlists#index'
+  get '/dashboard', to: 'playlists#index'
 end
